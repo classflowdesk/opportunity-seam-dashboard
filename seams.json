@@ -1,0 +1,193 @@
+{
+  "meta": {
+    "date": "2026-10-02",
+    "note": "质量测试轮：甚平全量 dig → Luffy 过滤 → 看板（替代邮件早报）。每卡突出：解决什么问题 / 为什么是机会缝隙 / 怎么赚钱。",
+    "digger": "甚平",
+    "filter": "Luffy",
+    "how_to_read": "上栏机会：先看三块（问题 / 缝隙 / 赚钱），再展开合法/风险/动作/三栏。下栏附近活动：AI / Build / Hackathon。",
+    "dashboard_url": "https://oaken-igloo-a7yq.here.now/",
+    "source_dig": "/workspace/opportunity-dig-2026-10-02-full.md",
+    "source_filtered": "/workspace/opportunity-filtered-2026-10-02.md"
+  },
+  "cards": [
+    {
+      "title": "EU Icons + Art.50 → Remocn / 竖屏一键合规标",
+      "signal": "go",
+      "signal_why": "成文法已强制披露，官方免费 Icons 已出，主流剪辑壳仍无产品化一键标。",
+      "zone": "white",
+      "problem": "谁痛：在欧盟分发 AI 短视频/数字人/虚构解说的创作者与海外短剧团队。什么痛：EU AI Act Art.50 已强制披露，手动打标丑且易漏，面临平台封禁。现状不够：剪映/CapCut/Premiere 无欧盟官方认可一键标。",
+      "why_seam": "成文法强制（2026-08-02）vs 短视频交付壳断层；欧盟已公开发布免费开源 EU Icons + Code of Practice，主流工具未产品化。",
+      "how_to_monetize": "谁付：出海剪辑工作室、短剧发行、本地商业号。付什么：Remocn 专业版订阅增值，或「EU AI 合规一键加标模版包」。客单直觉：模版 €19；带合规导出订阅 €29/月。",
+      "mismatch": "布鲁塞尔条文已落地 vs 一线剪辑师仍在手动打字。",
+      "why_legal": "直接采用欧盟委员会公版免费 Icons，遵循 Art.50 透明度指南；不伪造官方认证。",
+      "regulatory_risk": "极低。文案须声明「披露辅助，非官方合规认证」。",
+      "winners_losers": {
+        "winners": "创作者避封号 + 工具方溢价",
+        "losers": "假合规认证骗子"
+      },
+      "urls": [
+        "https://digital-strategy.ec.europa.eu/en/policies/eu-icons-labelling-ai-generated-content",
+        "https://digital-strategy.ec.europa.eu/en/news/commission-publishes-code-practice-marking-and-labelling-ai-generated-content",
+        "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai"
+      ],
+      "relevance": 4,
+      "actions_48h": [
+        "EU Icons 整理进 Remocn 预设图层（片头淡入/角标）",
+        "出 3 个 9:16 样片模版",
+        "影枫发 45 秒实测口播挂早鸟链接",
+        "Agent 导出流加「是否含 AI 披露」校验节点"
+      ],
+      "donts": [
+        "自造「欧盟官方认证」勋章",
+        "承诺「贴了绝对不限流」",
+        "用合规标为欺诈内容背书"
+      ],
+      "columns": {
+        "white": "官方 Icons + 片头片尾合规模板。",
+        "gray": "无。",
+        "illegal": "冒充 AI Office 授权/售假合规证书。"
+      },
+      "clean_entry": "仅图形化披露辅助 + 引用官方来源。窗口：生效后 3–6 个月。"
+    },
+    {
+      "title": "Hardware Night 满员 → 会后 Agent→实体教具 + Cube Rush 套件",
+      "signal": "go",
+      "signal_why": "52 席满员+候补证明「Agent 驱动物理世界」热，场外教具与保姆级图纸仍断档。",
+      "zone": "white",
+      "problem": "谁痛：Dublin 想做硬核科技启蒙的家长；想把 Agent 接到物理世界但不懂选型的独立开发者。什么痛：软件教程多，硬件接线/零件/标准化教具真空。现状不够：Hardware Night 仅 52 席当晚散场；开源方案零散。",
+      "why_seam": "线下 52 席满员+候补（WhatsApp/Agent 驱动物体）vs 场外可复用教具与保姆级图纸断档。",
+      "how_to_monetize": "谁付：本地华人/高科技家长、硬件启蒙爱好者。付什么：Cube Rush 实体教具套件、Agent 连硬件指南、小班答疑。客单直觉：BOM+指南 €19；硬件盒 €89；2h 工作坊 €120。",
+      "mismatch": "现场几十人火爆 vs 场外成百上千人要实体套件无人供。",
+      "why_legal": "合法买卖开源元器件与自有魔方教具；符合爱尔兰 CRA 2022。",
+      "regulatory_risk": "低。带电件注意 CE 元器件；明确退换货。",
+      "winners_losers": {
+        "winners": "家长/极客省踩坑 + 套件方产品化溢价",
+        "losers": "只会 PPT 空谈 AI 的一方"
+      },
+      "urls": [
+        "https://luma.com/hardware-night",
+        "https://www.dublinaiweek.com/"
+      ],
+      "relevance": 4,
+      "actions_48h": [
+        "候补 Hardware Night，可带 Cube Rush 样品",
+        "整理树莓派/ESP32 + WhatsApp Webhook「Cube Rush 接口简版」",
+        "公开 Google Sheet BOM（DoneDeal/Radionics/Amazon 平替）",
+        "影枫脚本：「€50 开源件让 Agent 操纵真实魔方」"
+      ],
+      "donts": [
+        "冒用「Hardware Night 官方指定教具」",
+        "Dogpatch 场外无照摆摊",
+        "盗用未开源路演"
+      ],
+      "columns": {
+        "white": "会后原创手记 + 自有套件预售。",
+        "gray": "无。",
+        "illegal": "无照占道、冒充主办方。"
+      },
+      "clean_entry": "正规候补、会后独立开发者身份产出、正规发票。窗口：2026-10-05 前后 72h。"
+    },
+    {
+      "title": "WCA 赛后 + Halloween Code Club 抢票前 → Cube Rush 亲子教练短窗",
+      "signal": "maybe",
+      "signal_why": "WCA 满员热度未散与图书馆免费营开抢之间约两周私教/自练真空，可贴 Cube Rush。",
+      "zone": "white",
+      "problem": "谁痛：9–12 岁数理动手爱好家庭；刚比完赛想提速的小选手家长。什么痛：家长不会高阶公式；图书馆免费编程营难抢。现状不够：本地缺系统魔方进阶营，要么贵成人班要么枯燥自学。",
+      "why_seam": "WCA Dublin Autumn Solving 2026（9/26–27）90 席满员热度未散 vs Halloween Code Club（10/27–29）约 10/20 10:00 开抢之间约两周私教/自练真空。",
+      "how_to_monetize": "谁付：重视 STEM 的华人及本地中产家长。付什么：Cube Rush 亲子提速自练、万圣节 3 天小班冲刺。客单直觉：自练 €15/季；3 天营 €79。",
+      "mismatch": "官方/公立容量极小 vs 全市少年假期 STEM 刚需。",
+      "why_legal": "合法青少年课外科普；遵守儿童保护与 DPC 最小必要数据。",
+      "regulatory_risk": "极低（线上为主）；不收集非必要未成年人隐私。",
+      "winners_losers": {
+        "winners": "孩子技能 + 家长假期安排 + 教练课时",
+        "losers": "忽视交互的死板班"
+      },
+      "urls": [
+        "https://www.worldcubeassociation.org/competitions/DublinAutumnSolving2026",
+        "https://www.eventbrite.ie/e/halloween-code-club-camp-for-beginners-tickets-2001400363363"
+      ],
+      "relevance": 4,
+      "actions_48h": [
+        "用公开成绩做「都柏林少年魔方水平基准图」",
+        "Cube Rush「CFOP 十字训练卡」H5 测速",
+        "影枫短视频：「抢不到图书馆万圣节编程课？用魔方练算法思维」",
+        "亲子群免费打卡营预热正价课"
+      ],
+      "donts": [
+        "冒充 WCA 官方发证",
+        "违规采儿童人脸/敏感身份",
+        "「包拿世界冠军」虚假承诺"
+      ],
+      "columns": {
+        "white": "原创复盘+自练软件+小班课。",
+        "gray": "无。",
+        "illegal": "冒充主办、违规儿童数据。"
+      },
+      "clean_entry": "引用 WCA 公开数据出处；课程自主研发。窗口：赛后至 10/20 开抢前两周。"
+    }
+  ],
+  "events": [
+    {
+      "title": "Hardware Night: Build an Agent to Control Hardware",
+      "category": "build",
+      "when": "2026-10-05 18:00–21:00 IST",
+      "where": "Dogpatch Labs, Dublin 1",
+      "status": "waitlist",
+      "url": "https://luma.com/hardware-night",
+      "why_relevant": "直接支撑硬件教具卡：Agent→实体与 Cube Rush 套件；52 席满员候补＝线下溢出。",
+      "signal": "go"
+    },
+    {
+      "title": "Lua AI Build Night: Hire Your First AI Colleague",
+      "category": "build",
+      "when": "2026-10-06 18:00–21:00 IST",
+      "where": "Baseline, Dublin",
+      "status": "open",
+      "url": "https://luma.com/lua-build-night",
+      "why_relevant": "一人公司 Agent 替代基础岗位叙事，贴 Agent 工作流资产。",
+      "signal": "go"
+    },
+    {
+      "title": "Halloween Code Club Camp for Beginners",
+      "category": "build",
+      "when": "2026-10-27–29 13:30–15:00 IST（约 10/20 10:00 开抢）",
+      "where": "North Clondalkin Library, Dublin 22",
+      "status": "open",
+      "url": "https://www.eventbrite.ie/e/halloween-code-club-camp-for-beginners-tickets-2001400363363",
+      "why_relevant": "公立免费营稀缺 → Cube Rush 场外自练短窗；「忙但无觉」。",
+      "signal": "maybe"
+    },
+    {
+      "title": "Dublin AI Week Opening Night",
+      "category": "ai",
+      "when": "2026-10-02 18:00–21:00 IST",
+      "where": "Dublin 8",
+      "status": "sold-out",
+      "url": "https://www.dublinaiweek.com/events",
+      "why_relevant": "仅作周程信号：本地 AI 热度峰值；产品化在会后，不单独做机会卡。",
+      "signal": "maybe"
+    }
+  ],
+  "footnotes": [
+    {
+      "hook": "倒卖/共享教育或流媒体订阅、伪造学籍",
+      "note": "常构成合同欺诈/盗用资格，严重时涉刑事。",
+      "clean_alt": "本人资格申领教程、校官方工作坊、家庭正价套餐。"
+    },
+    {
+      "hook": "闲鱼转售账号、代充、无授权数字会员",
+      "note": "平台明确禁售，货源常涉盗号/盗刷。",
+      "clean_alt": "自有版权教程、BYOK 模板、实物教具。"
+    },
+    {
+      "hook": "冒充 AI Office/DPC/欧盟「合规认证」或恐吓式贩卖",
+      "note": "假冒公权力与误导性商业宣传。",
+      "clean_alt": "引用官方原文 +「非法律意见」自测/披露辅助。"
+    },
+    {
+      "hook": "伪造活动收款/假赞助/无牌街头售卖",
+      "note": "欺诈收款与无牌经营。",
+      "clean_alt": "正规 RSVP + 原创会后笔记；摆摊走 DCC Event Trading。"
+    }
+  ]
+}

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>机会看板 · Director 速判</title>
+  <meta name="description" content="Xiang 机会看板：机会卡片速判与都柏林附近 AI / 技术 / 黑客松活动。" />
+  <meta name="theme-color" content="#0c0f0e" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"IBM Plex Sans"', '"Noto Sans SC"', 'system-ui', 'sans-serif'],
+            mono: ['"IBM Plex Mono"', 'ui-monospace', 'monospace'],
+          },
+          colors: {
+            ink: { 950:'#0c0f0e', 900:'#121816', 800:'#1a221e', 700:'#24302a', 600:'#3a4a42', 400:'#8a9a90', 300:'#b4c0b8', 100:'#e8eee9' },
+            accent: { DEFAULT:'#d4a017', dim:'#a07a12', soft:'#f3e2a8' },
+            mint: { DEFAULT:'#3dba8a', dim:'#2a8f68' },
+            danger: { DEFAULT:'#e07070', dim:'#a04848' },
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root { color-scheme: dark; }
+    html { -webkit-text-size-adjust: 100%; }
+    body { background: #0c0f0e; overflow-x: hidden; }
+    .grain {
+      background-image:
+        radial-gradient(ellipse 80% 50% at 20% -10%, rgba(212,160,23,.12), transparent 50%),
+        radial-gradient(ellipse 60% 40% at 90% 10%, rgba(61,186,138,.08), transparent 45%),
+        linear-gradient(180deg, #0c0f0e 0%, #101512 100%);
+    }
+    .card {
+      background: linear-gradient(165deg, rgba(26,34,30,.95), rgba(18,24,22,.98));
+      border: 1px solid rgba(138,154,144,.14);
+    }
+    @media (hover:hover) {
+      .card:hover { border-color: rgba(212,160,23,.35); }
+    }
+    .sticky-bar {
+      position: sticky; top: 0; z-index: 40;
+      background: rgba(12,15,14,.92); backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(138,154,144,.2);
+      padding-top: max(0.5rem, env(safe-area-inset-top));
+    }
+    .h-scroll {
+      display: flex; gap: .5rem; overflow-x: auto; -webkit-overflow-scrolling: touch;
+      scrollbar-width: none; padding-bottom: 2px;
+    }
+    .h-scroll::-webkit-scrollbar { display: none; }
+    .seg-btn {
+      flex: 0 0 auto; min-height: 38px; padding: 0 14px; border-radius: 999px;
+      border: 1px solid rgba(138,154,144,.25); background: #1a221e; color: #b4c0b8;
+      font-size: 13px; font-weight: 500; white-space: nowrap;
+      transition: all 0.15s ease-in-out;
+    }
+    .seg-btn:hover { border-color: rgba(212,160,23,.4); color: #f3e2a8; }
+    .seg-btn.active { background: rgba(212,160,23,.18); border-color: rgba(212,160,23,.5); color: #f3e2a8; }
+    .sig-go { background: rgba(61,186,138,.18); color: #3dba8a; border: 1px solid rgba(61,186,138,.4); }
+    .sig-maybe { background: rgba(212,160,23,.15); color: #f3e2a8; border: 1px solid rgba(212,160,23,.35); }
+    .sig-skip { background: rgba(138,154,144,.12); color: #8a9a90; border: 1px solid rgba(138,154,144,.25); }
+    .status-open { background: rgba(61,186,138,.15); color: #3dba8a; border: 1px solid rgba(61,186,138,.35); }
+    .status-waitlist { background: rgba(212,160,23,.15); color: #f3e2a8; border: 1px solid rgba(212,160,23,.35); }
+    .status-sold-out { background: rgba(224,112,112,.15); color: #e07070; border: 1px solid rgba(224,112,112,.35); }
+  </style>
+</head>
+<body class="grain text-ink-100 font-sans min-h-screen pb-16">
+  <header class="sticky-bar px-4 pb-3">
+    <div class="max-w-4xl mx-auto">
+      <div class="flex items-start justify-between gap-3">
+        <div>
+          <p class="text-[11px] uppercase tracking-wider text-ink-400 font-mono">Xiang 机会嗅觉 · 规则缝</p>
+          <h1 class="text-lg sm:text-xl font-semibold text-ink-100 mt-0.5">机会与活动看板</h1>
+          <p id="meta" class="text-xs text-ink-400 mt-1">加载中…</p>
+          <p id="how-to-read" class="text-xs text-ink-300 mt-1.5 leading-relaxed"></p>
+        </div>
+        <div class="flex flex-col items-end gap-1.5 shrink-0">
+          <span id="count-pill" class="text-xs font-mono px-2.5 py-1 rounded-full bg-ink-800 text-accent-soft border border-ink-600">—</span>
+          <span id="events-count-pill" class="text-xs font-mono px-2.5 py-1 rounded-full bg-ink-800 text-mint border border-ink-600">—</span>
+        </div>
+      </div>
+      <div class="mt-3 flex items-center justify-between border-t border-ink-700/60 pt-2.5">
+        <span class="text-xs text-ink-400 font-medium">卡片筛选</span>
+        <div class="h-scroll" id="filters" role="tablist" aria-label="卡片筛选"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 1) 「机会」SECTION -->
+  <section class="max-w-4xl mx-auto px-4 pt-6" id="opportunities-wrap">
+    <div class="flex items-center justify-between mb-3">
+      <div class="flex items-center gap-2">
+        <h2 class="text-base sm:text-lg font-bold text-ink-100 flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-accent inline-block"></span>「机会」
+        </h2>
+        <span class="text-xs text-ink-400">Brief 落地机会卡片</span>
+      </div>
+    </div>
+    <div class="space-y-4" id="list"></div>
+
+    <!-- Small compact footnotes under opportunities -->
+    <div id="footnotes" class="mt-6 pt-4 border-t border-ink-700/60" hidden>
+      <h3 class="text-xs font-semibold text-ink-400 uppercase tracking-wider font-mono flex items-center gap-1.5 mb-2">
+        <span>附注 / 合规红线提醒（干净替代）</span>
+      </h3>
+      <div id="footnotes-list" class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs"></div>
+    </div>
+  </section>
+
+  <!-- 2) 「附近活动」SECTION -->
+  <section class="max-w-4xl mx-auto px-4 pt-10" id="events-wrap">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3 border-b border-ink-700/60 pb-3">
+      <div>
+        <h2 class="text-base sm:text-lg font-bold text-ink-100 flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-mint inline-block"></span>「附近活动」
+        </h2>
+        <p class="text-xs text-ink-400 mt-0.5">都柏林 AI · 技术 · Hackathon 附近线下场次</p>
+      </div>
+      <!-- Category chips -->
+      <div class="h-scroll" id="event-filters" role="tablist" aria-label="活动分类筛选"></div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3" id="events-list"></div>
+  </section>
+
+  <footer class="max-w-4xl mx-auto px-4 mt-12 text-xs text-ink-400 leading-relaxed border-t border-ink-800 pt-6">
+    <div class="flex flex-col sm:flex-row justify-between gap-2">
+      <p>Luffy 过滤后写入看板（替代邮件早报）。全量卡片包含错配、合法性、监管风险、谁赢谁亏、48h动作、禁止项与三栏完整字段。</p>
+      <p class="shrink-0 font-mono text-ink-400">Dublin, 2026-10-02</p>
+    </div>
+  </footer>
+
+  <script src="./app.js"></script>
+</body>
+</html>
